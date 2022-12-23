@@ -681,21 +681,24 @@ Sass Mixins는 스타일 시트 전체에서 재사용 할 CSS 선언 그룹 을
 =믹스인이름
   스타일
 // SCSS
+```scss
 @mixin large-text {
   font-size: 22px;
   font-weight: bold;
   font-family: sans-serif;
   color: orange;
 }
-
+```
 // Sass
+```
 =large-text
   font-size: 22px
   font-weight: bold
   font-family: sans-serif
   color: orange
+```
 Mixin은 선택자를 포함 가능하고 상위(부모) 요소 참조(& 같은)도 할 수 있다.
-
+```scss
 @mixin large-text {
   font: {
     size: 22px;
@@ -712,6 +715,7 @@ Mixin은 선택자를 포함 가능하고 상위(부모) 요소 참조(& 같은)
     background: url("/images/icon.png");
   }
 }
+```
 @include
 선언된 Mixin을 사용(포함)하기 위해서는 @include가 필요한다.
 위에서 선언한 Mixin을 사용해 보겠습니다.
@@ -724,20 +728,23 @@ Mixin은 선택자를 포함 가능하고 상위(부모) 요소 참조(& 같은)
 SCSS:
 
 // SCSS
+```scss
 h1 {
   @include large-text;
 }
 div {
   @include large-text;
 }
-
+```
 // Sass
+```scss
 h1
   +large-text
 div
   +large-text
+  ```
 Compiled to:
-
+```css
 h1 {
   font-size: 22px;
   font-weight: bold;
@@ -763,7 +770,8 @@ div::after {
 div span.icon {
   background: url("/images/icon.png");
 }
-인수(Arguments)
+```
+### 인수(Arguments)
 Mixin은 함수(Functions)처럼 인수(Arguments)를 가질 수 있다.
 하나의 Mixin으로 다양한 결과를 만들 수 있다.
 
@@ -782,7 +790,7 @@ Mixin은 함수(Functions)처럼 인수(Arguments)를 가질 수 있다.
 제공되는 여러 데이터들을 전달인수(Arguments) 라고 부른다.
 
 SCSS:
-
+```scss
 @mixin dash-line($width, $color) {
   border: $width dashed $color;
 }
@@ -797,6 +805,7 @@ Compiled to:
 .box2 {
   border: 4px dashed blue;
 }
+```
 인수의 기본값 설정
 인수(argument)는 기본값(default value)을 가질 수 있다.
 @include 포함 단계에서 별도의 인수가 전달되지 않으면 기본값이 사용됩니다.
@@ -805,7 +814,7 @@ Compiled to:
   스타일;
 }
 SCSS:
-
+```scss
 @mixin dash-line($width: 1px, $color: black) {
   border: $width dashed $color;
 }
@@ -820,6 +829,7 @@ Compiled to:
 .box2 {
   border: 4px dashed black;
 }
+```
 키워드 인수(Keyword Arguments)
 @mixin 믹스인이름($매개변수A: 기본값, $매개변수B: 기본값) {
   스타일;
@@ -829,7 +839,7 @@ Compiled to:
 Mixin에 전달할 인수를 입력할 때 명시적으로 키워드(변수)를 입력하여 작성할 수 있다.
 별도의 인수 입력 순서를 필요로 하지 않아 편리하게 작성할 수 있다.
 단, 작성하지 않은 인수가 적용될 수 있도록 기본값을 설정해 주는 것이 좋습니다.
-
+```scss
 @mixin position(
   $p: absolute,
   $t: null,
@@ -866,6 +876,7 @@ Mixin에 전달할 인수를 입력할 때 명시적으로 키워드(변수)를 
   top: 30px;
   right: 40px;
 }
+```
 가변 인수(Variable Arguments)
 때때로 입력할 인수의 개수가 불확실한 경우가 있다.
 그럴 경우 가변 인수를 사용할 수 있다.
